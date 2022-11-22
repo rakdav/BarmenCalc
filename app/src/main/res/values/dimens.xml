@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="win_padding">16dp</dimen>
+    <dimen name="text_size">16pt</dimen>
+    <dimen name="sum_size">24pt</dimen>
+</resources>

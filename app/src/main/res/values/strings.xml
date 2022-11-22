@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BarmenCalc</string>
+    <string name="buttonSend">Send</string>
+    <string name="enter">Enter money</string>
+    <string name="message">Your total sum</string>
+    <string name="ok_button">OK</string>
+    <string name="grate">GREATE</string>
+</resources>
