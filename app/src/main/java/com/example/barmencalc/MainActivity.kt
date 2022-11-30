@@ -42,13 +42,15 @@ class MainActivity : AppCompatActivity() {
 
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                var Sum:Int=s.toString().toInt()
-                var procent:Int=seek.progress
-                proc.text=procent.toString()
-                var calculator:Calculator=Calculator(procent,Sum)
-                sumProc.text="%.2f".format(calculator.sumProcent())
-                sumTotal.text="%.2f".format(calculator.sumTotal())
-                TotalSum=calculator.sumTotal()
+                if(s.toString().length!=0) {
+                    var Sum: Int = s.toString().toInt()
+                    var procent: Int = seek.progress
+                    proc.text = procent.toString()
+                    var calculator: Calculator = Calculator(procent, Sum)
+                    sumProc.text = "%.2f".format(calculator.sumProcent())
+                    sumTotal.text = "%.2f".format(calculator.sumTotal())
+                    TotalSum = calculator.sumTotal()
+                }
             }
             override fun afterTextChanged(s: Editable?) {
             }
@@ -75,15 +77,19 @@ class MainActivity : AppCompatActivity() {
         })
         send.setOnClickListener(
         {
-            val intent:Intent= Intent(this,ClientActivity::class.java)
+            val intent:Intent= Intent(this,
+                ClientActivity::class.java)
             intent.putExtra(TOTALSUM_EXTRA,TotalSum)
             getResult.launch(intent)
         })
     }
-    private val getResult=registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+    private val getResult=registerForActivityResult(ActivityResultContracts.
+    StartActivityForResult())
     {
         if(it.resultCode== Activity.RESULT_OK){
-            result.text=resources.getString(R.string.grate)
+            var intent:Intent= it.data!!
+            result.text=resources.getString(R.string.grate)+"\n"
+                    intent.getStringExtra("message")
         }
     }
 }
